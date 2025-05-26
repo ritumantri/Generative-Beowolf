@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Distorted Text Scroll</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      background-color: white;
+      overflow-x: hidden;
+    }
+
+    section {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    canvas {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .controls-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      gap: 30px;
+      padding: 16px 32px;
+      background: white;
+      border-top: 2px solid black;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .slider-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    input[type="range"] {
+      width: 160px;
+      appearance: none;
+      background: black;
+      height: 3px;
+      margin: 4px 0;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      appearance: none;
+      background: black;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .custom-file-upload {
+      font-size: 12px;
+      font-weight: bold;
+      border: 2px solid black;
+      background: none;
+      padding: 4px 8px;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    #jaggednessValue,
+    #fontSizeValue {
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Intro Animation Section -->
+  <section id="intro-section">
+    <!-- sketch-intro.js renders into this section -->
+  </section>
+
+  <!-- Distorted Text Section -->
+  <section id="text-section">
+    <div class="controls-container">
+      <div class="slider-container">
+        <label for="jaggednessSlider">Jaggedness:</label>
+        <input type="range" id="jaggednessSlider" min="0" max="8" value="2" step="0.1">
+        <span id="jaggednessValue">2.0</span>
+      </div>
+      <div class="slider-container">
+        <label for="fontSizeSlider">Font Size:</label>
+        <input type="range" id="fontSizeSlider" min="50" max="300" value="150" step="1">
+        <span id="fontSizeValue">150</span>
+      </div>
+      <div class="slider-container">
+        <label class="file-upload-label">Upload Font:</label>
+        <label class="custom-file-upload">
+  Choose File
+  <input type="file" id="fontUploadButton" accept=".ttf,.otf,.woff">
+</label>
+<span id="fontFileName" style="font-size: 12px; margin-top: 4px;"></span>
+      </div>
+    </div>
+  </section>
+
+  <script src="sketch-intro.js"></script>
+  <script src="sketch-main.js"></script>
+</body>
+</html>
